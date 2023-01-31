@@ -2,10 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef } from "react";
 import { useCodeMirror } from "@uiw/react-codemirror";
 import { markdown, markdownLanguage } from "@codemirror/lang-markdown";
 import { languages } from "@codemirror/language-data";
-import {
-  tokyoNightStorm,
-  tokyoNightStormInit,
-} from "@uiw/codemirror-theme-tokyo-night-storm";
+import { tokyoNightStormInit } from "@uiw/codemirror-theme-tokyo-night-storm";
 import { tags as t } from "@lezer/highlight";
 
 interface Props {
@@ -16,11 +13,16 @@ interface Props {
 const Editor: React.FC<Props> = (props) => {
   const { onChange, initialDoc } = props;
   const handleChange = useCallback(
-    (value: string) => onChange(value),
+    (value: string) => {
+      onChange(value);
+    },
     [onChange]
   );
 
   const customTheme = tokyoNightStormInit({
+    settings: {
+      fontFamily: "Space Grotesk",
+    },
     styles: [
       {
         tag: t.heading1,
