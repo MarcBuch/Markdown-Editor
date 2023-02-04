@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom CSS Classes prefixed with c- */
+.c-card {
+  height: 80vh;
+  width: 40vh;
+}

@@ -1,0 +1,12 @@
+.preview {
+  font-family: "Space Grotesk";
+  background-color: #24283b;
+}
+
+.preview h1,
+.preview h2,
+.preview h3,
+.preview h4 {
+  border-bottom: none;
+  margin-bottom: 1rem;
+}

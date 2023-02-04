@@ -6,12 +6,16 @@ import { tokyoNightStormInit } from "@uiw/codemirror-theme-tokyo-night-storm";
 import { tags as t } from "@lezer/highlight";
 
 interface Props {
+  className: string;
   initialDoc: string;
   onChange: (doc: string) => void;
 }
 
-const Editor: React.FC<Props> = (props) => {
-  const { onChange, initialDoc } = props;
+const Editor: React.FC<Props> = ({
+  className,
+  onChange,
+  initialDoc,
+}: Props) => {
   const handleChange = useCallback(
     (value: string) => {
       onChange(value);
@@ -49,8 +53,8 @@ const Editor: React.FC<Props> = (props) => {
   const { setContainer } = useCodeMirror({
     value: initialDoc,
     container: editor.current,
-    height: "400px",
-    width: "800px",
+    minHeight: "100%",
+    minWidth: "100%",
     extensions: [
       markdown({
         base: markdownLanguage,
@@ -58,6 +62,9 @@ const Editor: React.FC<Props> = (props) => {
         addKeymap: true,
       }),
     ],
+    basicSetup: {
+      highlightActiveLine: true,
+    },
     theme: customTheme,
     onChange: handleChange,
   });
@@ -68,7 +75,7 @@ const Editor: React.FC<Props> = (props) => {
     }
   }, [editor.current]);
 
-  return <div className="editor-wrapper" ref={editor} />;
+  return <div className={className} ref={editor} />;
 };
 
 export default Editor;
