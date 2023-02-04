@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef } from "react";
 import { useCodeMirror } from "@uiw/react-codemirror";
 import { markdown, markdownLanguage } from "@codemirror/lang-markdown";
 import { languages } from "@codemirror/language-data";
-import { tokyoNightStormInit } from "@uiw/codemirror-theme-tokyo-night-storm";
+import { tokyoNightInit, tokyoNight } from "@uiw/codemirror-theme-tokyo-night";
 import { tags as t } from "@lezer/highlight";
 
 interface Props {
@@ -23,7 +23,7 @@ const Editor: React.FC<Props> = ({
     [onChange]
   );
 
-  const customTheme = tokyoNightStormInit({
+  const customTheme = tokyoNightInit({
     settings: {
       fontFamily: "Space Grotesk",
     },
@@ -62,6 +62,7 @@ const Editor: React.FC<Props> = ({
         addKeymap: true,
       }),
     ],
+    autoFocus: true,
     basicSetup: {
       highlightActiveLine: true,
     },
