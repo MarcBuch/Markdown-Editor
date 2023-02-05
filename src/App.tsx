@@ -2,10 +2,11 @@ import { useCallback, useState } from "react";
 import Editor from "./components/Editor";
 import Preview from "./components/Preview";
 import { useHotkeys } from "react-hotkeys-hook";
+import { useSessionStorage, useLocalStorage } from "usehooks-ts";
 
 function App() {
-  const [doc, setDoc] = useState<string>("# Hello world\n");
-  const [editorView, setEditorView] = useState<boolean>(true);
+  const [doc, setDoc] = useLocalStorage("md", "# Hello world\n");
+  const [editorView, setEditorView] = useSessionStorage("view", true);
 
   const handleDocChange = useCallback((newDoc: string) => {
     setDoc(newDoc);
