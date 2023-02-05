@@ -26,7 +26,10 @@ function App() {
   return (
     <div className="font-spaceGrotesk min-h-screen py-4 flex flex-col items-center space-y-10 bg-slate-700 text-white">
       <h1 className="text-6xl">Yet Another Markdown Editor</h1>
-      <div className="">
+      <div className="flex flex-row space-x-5">
+        <p className="bg-slate-800/50 text-slate-200 h-min px-2 py-1 rounded">
+          Press CMD + B to switch view
+        </p>
         {!editorView ? (
           <Preview className="px-6 py-1 c-card">{doc}</Preview>
         ) : (
